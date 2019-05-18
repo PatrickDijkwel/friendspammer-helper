@@ -8,6 +8,17 @@
 	<artifactId>friendspammer-helper</artifactId>
 	<version>1.0-SNAPSHOT</version>
 
+	<distributionManagement>
+	  <repository>
+	    <id>packagecloud-friendspammer-helper</id>
+	    <url>packagecloud+https://packagecloud.io/patrickdijkwel/friendspammer-helper</url>
+	  </repository>
+	  <snapshotRepository>
+	    <id>packagecloud-friendspammer-helper</id>
+	    <url>packagecloud+https://packagecloud.io/patrickdijkwel/friendspammer-helper</url>
+	  </snapshotRepository>
+	</distributionManagement>
+
 	<build>
 		<plugins>
 			<plugin>
@@ -24,6 +35,13 @@
 				<version>2.22.1</version>
 			</plugin>
 		</plugins>
+		<extensions>
+			<extension>
+				<groupId>io.packagecloud.maven.wagon</groupId>
+		    	<artifactId>maven-packagecloud-wagon</artifactId>
+		    	<version>0.0.6</version>
+			</extension>
+		</extensions>
 	</build>
 
 
