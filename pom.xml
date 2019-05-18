@@ -10,11 +10,11 @@
 
 	<distributionManagement>
 	  <repository>
-	    <id>packagecloud-friendspammer-helper</id>
+	    <id>packagecloud-patrickdijkwel</id>
 	    <url>packagecloud+https://packagecloud.io/patrickdijkwel/friendspammer-helper</url>
 	  </repository>
 	  <snapshotRepository>
-	    <id>packagecloud-friendspammer-helper</id>
+	    <id>packagecloud-patrickdijkwel</id>
 	    <url>packagecloud+https://packagecloud.io/patrickdijkwel/friendspammer-helper</url>
 	  </snapshotRepository>
 	</distributionManagement>
