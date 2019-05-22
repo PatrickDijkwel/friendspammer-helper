@@ -10,7 +10,12 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class EmailSender {
+	
+	final static Logger logger = LoggerFactory.getLogger(EmailSender.class);
 	
 	public static void sendEmail(String subject, String to, String messageBody, boolean asHtml) {
 
@@ -18,7 +23,7 @@ public class EmailSender {
 		props.put("mail.smtp.host", "smtp.mailtrap.io");
 		props.put("mail.smtp.port", "2525");
 		props.put("mail.smtp.auth", "true");
-
+		
 		String username = "acbbe8a16f5b9f";
 		String password = "6e1a8d2b214b7c";
 
@@ -29,7 +34,6 @@ public class EmailSender {
 					}
 				  });
 		try {
-
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress("spammer@spammer.com"));
 			message.setRecipients(Message.RecipientType.TO,
@@ -83,7 +87,7 @@ public class EmailSender {
 				}
 				Transport.send(message);
 	
-				System.out.println("Done");
+				logger.info("Done");
 			}
 
 		} catch (MessagingException e) {
