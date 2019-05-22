@@ -9,7 +9,6 @@ import org.slf4j.LoggerFactory;
 
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
-import com.mongodb.MongoCredential;
 import com.mongodb.MongoException;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
@@ -23,8 +22,6 @@ public class MongoSaver {
 	}
 	
 	public static boolean saveEmail(String to, String from, String subject, String text, Boolean html) {
-		String userName = "spammer";
-		String password = "hamspam";
 		String database = "friendspammer";
 		
 		boolean success = true;
