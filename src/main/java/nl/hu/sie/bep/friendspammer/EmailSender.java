@@ -17,6 +17,10 @@ public class EmailSender {
 	
 	static final Logger logger = LoggerFactory.getLogger(EmailSender.class);
 	
+	private EmailSender() {
+		throw new IllegalStateException("Utility class");
+	}
+	
 	public static void sendEmail(String subject, String to, String messageBody, boolean asHtml) {
 
 		Properties props = new Properties();
