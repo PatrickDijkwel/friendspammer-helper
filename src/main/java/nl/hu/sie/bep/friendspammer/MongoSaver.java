@@ -4,6 +4,7 @@ package nl.hu.sie.bep.friendspammer;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import org.bson.Document;
 import org.slf4j.Logger;
@@ -55,7 +56,7 @@ public class MongoSaver {
 		return success;
  		
 	} 
-	public static ArrayList<Email> getAll() {
+	public static List<Email> getAll() {
 		String userName = "spammer";
 		String password = "hamspam";
 		String database = "friendspammer";
