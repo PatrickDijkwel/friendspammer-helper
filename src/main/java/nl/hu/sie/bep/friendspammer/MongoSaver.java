@@ -29,13 +29,15 @@ public class MongoSaver {
 	}
 	
 	public static boolean saveEmail(String to, String from, String subject, String text, Boolean html) {
+		String userName = "spammer";
+		String password = "hamspam";
 		String database = "friendspammer";
+		
+		MongoCredential credential = MongoCredential.createCredential(userName, database, password.toCharArray());
 		
 		boolean success = true;
 		
-		MongoClientURI uri = new MongoClientURI("mongodb+srv://administrator:<password>@cluster0-vaulu.mongodb.net/test?retryWrites=true");
-		
-		try (MongoClient mongoClient = new MongoClient(uri) ) {
+		try (MongoClient mongoClient = new MongoClient(new ServerAddress("ds227939.mlab.com", 27939), credential, MongoClientOptions.builder().build()) ) {
 			
 			MongoDatabase db = mongoClient.getDatabase( database );
 			
@@ -67,6 +69,7 @@ public class MongoSaver {
 		MongoClient mongoClient = new MongoClient(new ServerAddress("ds227939.mlab.com", 27939), credential, MongoClientOptions.builder().build());
 			
 			MongoDatabase db = mongoClient.getDatabase( database );
+			
 			MongoCollection<Document> c = db.getCollection("email");
 			Iterator<Document> it = c.find().iterator();
 			
