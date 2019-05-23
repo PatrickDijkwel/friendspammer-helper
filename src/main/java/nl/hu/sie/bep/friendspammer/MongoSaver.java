@@ -2,14 +2,20 @@ package nl.hu.sie.bep.friendspammer;
 
 
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 import org.bson.Document;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
 import com.mongodb.MongoClient;
+import com.mongodb.MongoClientOptions;
 import com.mongodb.MongoClientURI;
+import com.mongodb.MongoCredential;
 import com.mongodb.MongoException;
+import com.mongodb.ServerAddress;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
@@ -48,6 +54,32 @@ public class MongoSaver {
 		
 		return success;
  		
-	}
+	} 
+	public static ArrayList<Email> getAll() {
+		String userName = "spammer";
+		String password = "hamspam";
+		String database = "friendspammer";
+		
+		ArrayList<Email> allEmails = new ArrayList<>();
+		MongoCredential credential = MongoCredential.createCredential(userName, database, password.toCharArray());
 
+		MongoClient mongoClient = new MongoClient(new ServerAddress("ds227939.mlab.com", 27939), credential, MongoClientOptions.builder().build());
+			
+			MongoDatabase db = mongoClient.getDatabase( database );
+			MongoCollection<Document> c = db.getCollection("email");
+			Iterator<Document> it = c.find().iterator();
+			
+			while(it.hasNext()) {
+				Email e = new Email();
+				Document email = it.next();
+				e.to = (String)	email.get("to");
+				e.from = (String) email.get("from");
+				e.subject = (String) email.get("subject");
+				e.text = (String) email.get("text");
+				e.asHtml = (boolean) email.get("asHtml");
+				allEmails.add(e);
+			}
+			mongoClient.close();
+			return allEmails;
+	}
 }
