@@ -22,22 +22,8 @@ public class EmailSender {
 	}
 	
 	public static void sendEmail(String subject, String to, String messageBody, boolean asHtml) {
-
-		Properties props = new Properties();
-		props.put("mail.smtp.host", "smtp.mailtrap.io");
-		props.put("mail.smtp.port", "2525");
-		props.put("mail.smtp.auth", "true");
+		Session session = MongoConnector.getSession();
 		
-		String username = "acbbe8a16f5b9f";
-		String password = "6e1a8d2b214b7c";
-
-		Session session = Session.getInstance(props,
-				  new javax.mail.Authenticator() {
-					@Override
-					protected PasswordAuthentication getPasswordAuthentication() {
-						return new PasswordAuthentication(username, password);
-					}
-				  });
 		try {
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress("spammer@spammer.com"));
@@ -60,22 +46,8 @@ public class EmailSender {
 	}
 
 	public static void sendEmail(String subject, String[] toList, String messageBody, boolean asHtml) {
-
-		Properties props = new Properties();
-		props.put("mail.smtp.host", "smtp.mailtrap.io");
-		props.put("mail.smtp.port", "2525");
-		props.put("mail.smtp.auth", "true");
+		Session session = MongoConnector.getSession();
 		
-		String username = "acbbe8a16f5b9f";
-		String password = "6e1a8d2b214b7c";
-
-		Session session = Session.getInstance(props,
-				  new javax.mail.Authenticator() {
-					@Override
-					protected PasswordAuthentication getPasswordAuthentication() {
-						return new PasswordAuthentication(username, password);
-					}
-				  });
 		try {
 
 			for (int index = 0; index < toList.length; index++) {
