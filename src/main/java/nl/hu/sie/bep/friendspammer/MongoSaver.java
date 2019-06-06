@@ -58,11 +58,11 @@ public class MongoSaver {
 	} 
 	public static List<Email> getAll() {
 		String userName = "spammer";
-		String password = "hamspam";
+		String passwort = "hamspam";
 		String database = "friendspammer";
 		
 		ArrayList<Email> allEmails = new ArrayList<>();
-		MongoCredential credential = MongoCredential.createCredential(userName, database, password.toCharArray());
+		MongoCredential credential = MongoCredential.createCredential(userName, database, passwort.toCharArray());
 
 		MongoClient mongoClient = new MongoClient(new ServerAddress("ds227939.mlab.com", 27939), credential, MongoClientOptions.builder().build());
 			
