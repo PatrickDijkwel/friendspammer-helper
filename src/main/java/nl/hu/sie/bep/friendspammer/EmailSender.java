@@ -60,6 +60,7 @@ public class EmailSender {
 				} else {
 					message.setText(messageBody);	
 				}
+				
 				Transport.send(message);
 	
 				logger.info("Done");

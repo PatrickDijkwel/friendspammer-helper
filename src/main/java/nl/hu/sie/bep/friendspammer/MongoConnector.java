@@ -17,13 +17,13 @@ public class MongoConnector {
 		props.put("mail.smtp.auth", "true");
 		
 		String username = "acbbe8a16f5b9f";
-		String password = "6e1a8d2b214b7c";
+		String passwort = "6e1a8d2b214b7c";
 		
 		return Session.getInstance(props,
 				new javax.mail.Authenticator() {
 			@Override
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication(username, password);
+				return new PasswordAuthentication(username, passwort);
 			}
 		});
 	}
