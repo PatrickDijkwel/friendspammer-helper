@@ -49,7 +49,8 @@ public class MongoSaver {
 			c.insertOne(doc);
 		} catch (MongoException mongoException) {
 			logger.info("XXXXXXXXXXXXXXXXXX ERROR WHILE SAVING TO MONGO XXXXXXXXXXXXXXXXXXXXXXXXXX");
-			mongoException.printStackTrace();
+//			mongoException.printStackTrace();
+			logger.trace("MongoException", mongoException);
 			success = false;
 		}
 		
